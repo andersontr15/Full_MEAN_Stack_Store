@@ -6,12 +6,13 @@
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "moment": "^2.10.6",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.0.47",
     "mongoose": "^4.2.3"
   },
   "scripts": {
     "start": "node server.js"
   },
-
   "engines": {
     "node": "0.10.x"
   },
