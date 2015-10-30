@@ -12,6 +12,6 @@ require('./server/config/orders.js')(store);
 require('./server/config/products.js')(store);
 require('./server/config/reviews.js')(store);
 
-store.listen(process.env.PORT, function(){
+store.listen(Number(process.env.PORT), function(){
 	console.log("Listening");
 });
