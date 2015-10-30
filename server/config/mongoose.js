@@ -14,7 +14,6 @@ mongoose.connect(uristring, function(err, res) {
   }
 });
 
-mongoose.connect('mongodb://localhost/OrdersCustomers');
 
 var models_path = __dirname + '/../models'
 
