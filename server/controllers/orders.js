@@ -24,8 +24,7 @@ module.exports = (function() {
           }
           else{
             console.log("order success");
-            var product = req.body.item;
-            Product.findOne({product: product._id}, function(err, product){
+            Product.findOne({product: req.body.item}, function(err, product){
               console.log(product);
               product.quantity = product.quantity - req.body.quantity;
               product.save(function(err){if(err){console.log(err)}})
