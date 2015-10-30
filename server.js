@@ -13,5 +13,5 @@ require('./server/config/products.js')(store);
 require('./server/config/reviews.js')(store);
 
 store.listen(port, function(){
-	console.log("Listening");
+	console.log("Listening on 8000");
 });
