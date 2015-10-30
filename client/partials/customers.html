@@ -1,0 +1,30 @@
+<div class="container">
+	<div ng-controller="CustomersController">
+		<center>
+			<h3> Customers </h3>
+		</center>
+		<hr>
+		<h4>Add a new customer</h4>
+		<h5 style="color: red;" class="error hide">User already exists</h5>
+		<div class="form-group">
+			<label>Name:</label>
+			<input type="text" ng-model="newCustomer.name">
+			<input ng-click="addCustomers()" type="submit" class="btn btn-primary" value="Add">
+		</div>
+		<table class="table table-bordered table-striped table-hovered">
+			<input type="text" ng-model="name_filter" placeholder="Search customers..." class="pull-right">
+			<thead>
+				<tr>
+					<th>Customer Name</th>
+					<th>Created Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="customer in customers | filter: name_filter | orderBy: 'customer.created'">
+					<td>{{customer.name}}</span></td>
+					<td>{{customer.created | date:'MMMM d yyyy'}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

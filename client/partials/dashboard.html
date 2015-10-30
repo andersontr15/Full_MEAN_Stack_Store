@@ -1,0 +1,62 @@
+<div class="container" ng-controller="DashboardController">
+	<center>
+		<h3>Store Dashboard</h3>
+		<hr>
+		<input type="text" ng-model="name_filter" placeholder="Search Products" class="pull-right">
+		<h3 style="margin-left:150px">Products</h3>
+		<div class="panel-body" ng-init="limitProduct = 4">
+			<div class="row">
+				<div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="product in products | filter:name_filter | limitTo: limitProduct as results ">
+					<a href="#/products"><img class="img-responsive" ng-src="{{ product.img }}" alt="" style="width:100px"></a>
+				<p class="text-center">{{ product.product }}</p>
+				<p ng-show="product.quantity > 0"> Quantity: {{ product.quantity }} </p>
+				<p ng-show="product.quantity == 0">
+					<img src="https://s3.amazonaws.com/rapgenius/filepicker%2Fy6AaJImFScOedg1OWPn5_soldout.jpg" alt="" style="width:100px">
+				</p>
+				</p>
+				</div>
+					</div>
+				<p ng-show="limitProduct == 4" class="text-center"><a href="" ng-click="limitProduct = products.length">Show more products...</a></p>
+				<p ng-show="limitProduct == 8" class="text-center"><a href="" ng-click="limitProduct = 4">Show fewer products...</a></p>
+				<p ng-show="products.length == 0" class="text-center">No products to show </p>
+			</div>
+			<hr>
+			<div class="orders">
+				<h3>Recent Orders</h3>
+				<div class="panel-body" ng-init="limitOrder = 3">
+					<p ng-repeat="order in orders | orderBy: '-created' | limitTo: limitOrder as results">{{ order.customer }} purchased {{ order.quantity }} {{ order.item }}(s) on {{ order.created | date:'MMMM d yyyy'}}
+					<a href="#/orders"><img src="http://simpleicon.com/wp-content/uploads/shopping-cart-8.png" alt="" style="width:20px"></a>
+					</p>
+					<p class="text-center">
+					<p ng-show="limitOrder < orders.length" class="text-center"><a href="" ng-click="limitOrder = orders.length">Show more orders...</a></p>
+					<p ng-show="limitOrder >= orders.length" class="text-center"><a href="" ng-click="limitOrder = 3">Show fewer orders...</a></p>
+					</p>	
+				</div>
+			<hr>
+		</div>
+		<div class="reviews">
+				<h3>Recent Reviews</h3>
+				<div class="panel-body" ng-init="limitReview = 3">
+					<p ng-repeat="review in reviews | orderBy: '-created' | limitTo: limitReview as results">{{ review.customer }} wrote a review about {{ review.product }}  on {{ review.created | date:'MMMM d yyyy'}}
+					<a href="#/reviews"><img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-17-512.png" alt="" style="width:20px"></a>
+					</p>
+					<p class="text-center">
+						<p ng-show="limitReview < reviews.length" class="text-center"><a href="" ng-click="limitReview = reviews.length">Show more reviews...</a></p>
+						<p ng-show="limitReview >= reviews.length" class="text-center"><a href="" ng-click="limitReview = 3">Show fewer reviews...</a></p>
+					</p>	
+				</div>
+			<hr>
+		</div>
+		<div class="customers">
+			<h3>New Customers</h3>
+			<div class="panel-body" ng-app="timeApp" ng-init="limitCustomer = 3">
+				<p ng-repeat="customer in customers | orderBy: '-created' | limitTo: limitCustomer as results">{{ customer.name }} joined the store ({{customer.created | date: 'MMMM d yyyy'}})
+				<a href="#/customers"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/MW-Icon-CheckMark.svg/120px-MW-Icon-CheckMark.svg.png" alt="" style="width:25px"></a>
+				</p>
+				<p class="text-center">
+					<p ng-show="limitCustomer < customers.length" class="text-center"><a href="" ng-click="limitCustomer = customers.length">Show more customers...</a></p>
+					<p ng-show="limitCustomer >= customers.length" class="text-center"><a href="" ng-click="limitCustomer = 3">Show fewer customers...</a></p>
+				</p>			
+			</div>
+  	</center>
+ </div>

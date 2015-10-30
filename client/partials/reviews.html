@@ -1,0 +1,33 @@
+<div ng-controller="ReviewsController">
+	<center> 
+		<h3>Reviews</h3> 
+		<hr>
+	</center>
+	<h4>Add a new review</h4>
+	<div class="form-group">
+		<h5>Customer:</h5>
+		<select name="name" id="" ng-model="newReview.customer">
+			<option ng-repeat="customer in customers">{{customer.name}}</option>
+		</select>
+		<h5>Product:</h5>
+			<select name="name" id="" ng-model="newReview.product">
+				<option ng-repeat="product in products">{{product.product}}</option>
+			</select>
+		<h5>Review:</h5>
+			<textarea name="review" ng-model="newReview.review" id="" cols="30" rows="10" style="resize:none"></textarea>
+		<input ng-click="addReviews()" type="submit" class="btn btn-primary" value="Add">
+	</div>
+	<div class="discussion" style="border:3px solid black">
+		<center>
+			<div class="jumbotron" style="width:300px height:10px"><h4> Recent Reviews</h4></div>
+		<hr>
+		</center>
+	<div class="board" ng-repeat="review in reviews | orderBy: 'review.created'">
+		<h5>Customer: <b>{{review.customer}}</b></h5>
+		<h5>Review: {{review.review}} </h5>
+		<h5>Product Reviewed: <a href="#/products" style="text-decoration:none">{{review.product}}</a></h5>
+		<h5>Posted: {{review.created | date:'MMMM d yyyy'}}</h5>
+		<hr>
+	</div>
+</div>
+	

@@ -1,0 +1,8 @@
+div.discussion {
+				width:500px;
+				height:600px;
+				margin-left:600px;
+				margin-top:-400px;
+				overflow:scroll;
+				padding:5px;
+			   } 

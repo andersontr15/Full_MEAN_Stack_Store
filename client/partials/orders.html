@@ -1,0 +1,40 @@
+<div ng-controller="OrdersController">
+	<center>
+		<h3>Orders</h3>
+		<hr>
+	</center>
+	<h4>Add a new order</h4>
+	<div class="form-group">
+		<h5>Product Name: </h5>
+		<select name="name" id="" ng-model="newOrder.item">
+		<!-- ng-if to only let them make an order with products that have a quantity of greater than 0; quick hack -->
+			<option ng-repeat="product in products" ng-if="product.quantity != 0">{{product.product}}</option>
+		</select>
+		<h5>Quantity:</h5><input type="number" ng-model="newOrder.quantity">
+		<h5>Customer:</h5> 
+		<select name="name" id="" ng-model="newOrder.customer">
+			<option ng-repeat="customer in customers">{{ customer.name }}</option>
+		</select>
+		<input ng-click="addOrders()" type="submit" class="btn btn-primary" value="Add">
+	</div>
+	<table class="table table-bordered table-striped table-hovered">
+		<input type="text" ng-model="name_filter" placeholder="Search orders..." class="pull-right">
+		<thead>
+			<tr>
+				<th>Product Name</th>
+				<th>Customer Name</th>
+				<th>Quantity</th>
+				<th>Created Date</th>
+			</tr>
+		</thead>
+			<tbody>
+				<tr ng-repeat="order in orders | filter: name_filter | orderBy: 'order.created'">
+					<td>{{order.item}}</td>
+					<td>{{order.customer}}</td>
+					<td>{{order.quantity}}</td>
+					<td>{{order.created | date:'MMMM d yyyy'}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
