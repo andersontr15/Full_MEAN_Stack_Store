@@ -1,4 +1,3 @@
-var port = process.env.PORT || 3000;
 var express = require('express');
 var path = require('path');
 var store = express();
@@ -13,6 +12,6 @@ require('./server/config/orders.js')(store);
 require('./server/config/products.js')(store);
 require('./server/config/reviews.js')(store);
 
-store.listen(port, function() {
-  console.log('Mini MEAN Store on port ' + port);
+store.listen(process.env.PORT || 3000, function(){
+	console.log("Listening");
 });
