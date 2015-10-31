@@ -8,7 +8,7 @@
 		<h5>Product Name: </h5>
 		<select name="name" id="" ng-model="newOrder.item">
 		<!-- ng-if to only let them make an order with products that have a quantity of greater than 0; quick hack <-->
-			<option ng-repeat="product in products" ng-if="product.quantity != 0">{{product.product}}</option>
+			<option ng-repeat="product in products" ng-if="product.quantity > 0">{{product.product}}</option>
 		</select>
 		<h5>Quantity:</h5><input type="number" ng-model="newOrder.quantity">
 		<h5>Customer:</h5> 
