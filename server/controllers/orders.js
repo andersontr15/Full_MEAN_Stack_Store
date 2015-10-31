@@ -30,15 +30,12 @@ module.exports = (function() {
               product.save(function(err){if(err){console.log(err)}})
               console.log(product);
             });
-            // Product.findOneAndUpdate({product: req.body.item}, {$inc: {quantity: 1}});
-            // Product.findOneAndUpdate({product: req.body.item}, {$inc: {quantity: -req.body.quantity}})
             res.json(true);
           }
         })
       },
       destroy: function(req, res){
         console.log('deleting order in orders.js', req.params.id);
-
         Order.remove({_id: req.params.id}, function(err){
           if(err){
             console.log(err);

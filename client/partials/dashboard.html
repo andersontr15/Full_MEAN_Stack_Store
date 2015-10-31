@@ -10,7 +10,7 @@
 					<a href="#/products"><img class="img-responsive" ng-src="{{ product.img }}" alt="" style="width:100px"></a>
 				<p class="text-center">{{ product.product }}</p>
 				<p ng-show="product.quantity > 0"> Quantity: {{ product.quantity }} </p>
-				<p ng-show="product.quantity == 0">
+				<p ng-show="product.quantity <= 0">
 					<img src="https://s3.amazonaws.com/rapgenius/filepicker%2Fy6AaJImFScOedg1OWPn5_soldout.jpg" alt="" style="width:100px">
 				</p>
 				</p>
